@@ -14,6 +14,9 @@ echo   ^<title^>chunmomo^</title^>
 echo ^</head^>
 echo ^<body^>
 echo   ^<h1^>chunmomo^</h1^>
+echo   ^<div id="advertise"^>
+echo     ^<iframe src="advertise.html" frameborder="0" width="100%%" height="100"^>^</iframe^>
+echo   ^</div^>
 echo   ^<hr^>
 echo   ^<h2^>page_test^</h2^>
 ) > "%outfile%"
