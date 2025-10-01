@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>图片展示</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    .auto-img {
+      height: 200px; /* 缩略图高度 */
+      cursor: pointer;
+      margin: 10px;
+    }
+    /* 弹窗样式 */
+    #lightbox {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      justify-content: center;
+      align-items: center;
+    }
+    #lightbox img {
+      max-height: 90%;
+      max-width: 90%;
+    }
+    #lightbox:target {
+      display: flex;
+    }
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 40px;
+      color: white;
+      font-size: 30px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>HaneAme雨波 NO.290 24年01月 Original_Silver Kimono 2024_銀鈿和服 + [47P-253MB]</h1>
+  <a href="../../index.html">返回总目录</a> |
+  <a href="../menu.html">返回分支目录</a>
+  <br><br>
+
+  <!-- 图片缩略图 -->
+  <img src="1.jpg" alt="展示图片" class="auto-img">
+  <img src="2.jpg" alt="展示图片" class="auto-img">
+  <img src="3.jpg" alt="展示图片" class="auto-img">
+  <img src="4.jpg" alt="展示图片" class="auto-img">
+  <img src="5.jpg" alt="展示图片" class="auto-img">
+  <img src="6.jpg" alt="展示图片" class="auto-img">
+  <img src="7.jpg" alt="展示图片" class="auto-img">
+  <img src="8.jpg" alt="展示图片" class="auto-img">
+  <img src="9.jpg" alt="展示图片" class="auto-img">
+  <img src="10.jpg" alt="展示图片" class="auto-img">
+
+  <!-- 弹窗 -->
+  <div id="lightbox">
+    <span class="close-btn" onclick="closeLightbox()">&times;</span>
+    <img id="lightbox-img" src="" alt="大图">
+  </div>
+
+  <br>
+  <a href="../index.html">返回总目录</a>
+
+  <script>
+    const images = document.querySelectorAll('.auto-img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    let currentIndex = 0;
+
+    // 点击缩略图 => 打开大图
+    images.forEach((img, index) => {
+      img.addEventListener('click', () => {
+        currentIndex = index;
+        showImage();
+        lightbox.style.display = 'flex';
+      });
+    });
+
+    // 显示大图
+    function showImage() {
+      lightboxImg.src = images[currentIndex].src;
+    }
+
+    // 关闭弹窗
+    function closeLightbox() {
+      lightbox.style.display = 'none';
+    }
+
+    // 键盘控制
+    document.addEventListener('keydown', (e) => {
+      if (lightbox.style.display === 'flex') {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+          currentIndex = (currentIndex + 1) % images.length;
+          showImage();
+        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+          currentIndex = (currentIndex - 1 + images.length) % images.length;
+          showImage();
+        } else if (e.key === 'Escape') {
+          closeLightbox();
+        }
+      }
+    });
+  </script>
+</body>
+</html>
