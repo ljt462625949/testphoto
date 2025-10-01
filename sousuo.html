@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
@@ -29,7 +29,7 @@
       align-items: center;
       gap: 10px;
       flex-wrap: wrap;
-      margin: 0 auto 15px auto;
+      margin: 0 auto 20px auto;
       width: 600px;
       max-width: 90%;
       background: rgba(255,255,255,0.0);
@@ -82,7 +82,6 @@
       transition: transform 0.3s ease;
     }
 
-    /* --------- 保留整体白框的 links 样式 --------- */
     .links {
       margin-top: 20px;
       display: inline-block;
@@ -123,10 +122,15 @@
 
     /* ---------- 手机竖屏优化 ---------- */
     @media screen and (max-width: 768px) {
+      body {
+        text-align: center;
+      }
       .top-bar {
         flex-direction: column;
-        width: 95%;
-        gap: 12px;
+        width: 100%;
+        max-width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
       }
       select, input, button {
         width: 100%;
@@ -136,7 +140,8 @@
         min-width: auto;
       }
       #player iframe {
-        width: 95%;
+        width: 100%;
+        max-width: 100%;
       }
     }
   </style>
