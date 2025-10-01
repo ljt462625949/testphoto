@@ -10,7 +10,7 @@
       font-family: Arial, sans-serif;
       color: #000;
       text-align: center;
-      background: url('E:\\1.jpg') no-repeat center top;
+      background: url('https://ljt462625949.github.io/testphoto/sousuobeijing.jpg') no-repeat center top;
       background-size: cover;
       background-attachment: fixed;
       min-height: 100vh;
@@ -83,24 +83,29 @@
       transition: transform 0.3s ease;
     }
 
+    /* --------- 保留整体白框的 links 样式 --------- */
     .links {
       margin-top: 20px;
-      background: rgba(255,255,255,0.0);
       display: inline-block;
-      padding: 10px 20px;
-      border-radius: 12px;
+      padding: 12px 20px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(6px);
+      border: 1.5px solid #fff;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.18);
       color: #000;
+      font-weight: 600;
     }
 
     .links a {
-      margin: 0 10px;
+      margin: 0 8px;
       text-decoration: none;
       color: #000;
-      transition: color 0.3s;
+      transition: color 0.25s ease;
     }
 
     .links a:hover {
-      color: #555;
+      color: #444;
     }
 
     .instructions {
