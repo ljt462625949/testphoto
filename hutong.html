@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>月升沧海 - 播放器</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f5f5f5; text-align: center; }
+    h2 { margin-top: 20px; }
+    .playlist { margin: 20px auto; width: 80%; display: flex; flex-wrap: wrap; justify-content: center; }
+    .playlist button {
+      margin: 5px;
+      padding: 10px 15px;
+      border: none;
+      background: #4CAF50;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .playlist button:hover { background: #45a049; }
+    iframe { width: 80%; height: 500px; border: none; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h2>《后浪》全集播放</h2>
+  <p>点击集数进行播放：</p>
+
+  <div class="playlist">
+    <button onclick="play(1)">第1集</button>
+    <button onclick="play(2)">第2集</button>
+    <button onclick="play(3)">第3集</button>
+    <button onclick="play(4)">第4集</button>
+    <button onclick="play(5)">第5集</button>
+    <button onclick="play(6)">第6集</button>
+    <button onclick="play(7)">第7集</button>
+    <button onclick="play(8)">第8集</button>
+    <button onclick="play(9)">第9集</button>
+    <button onclick="play(10)">第10集</button>
+    <button onclick="play(11)">第11集</button>
+    <button onclick="play(12)">第12集</button>
+    <button onclick="play(13)">第13集</button>
+    <button onclick="play(14)">第14集</button>
+    <button onclick="play(15)">第15集</button>
+    <button onclick="play(16)">第16集</button>
+    <button onclick="play(17)">第17集</button>
+    <button onclick="play(18)">第18集</button>
+    <button onclick="play(19)">第19集</button>
+    <button onclick="play(20)">第20集</button>
+    <button onclick="play(21)">第21集</button>
+    <button onclick="play(22)">第22集</button>
+    <button onclick="play(23)">第23集</button>
+    <button onclick="play(24)">第24集</button>
+    <button onclick="play(25)">第25集</button>
+    <button onclick="play(26)">第26集</button>
+    <button onclick="play(27)">第27集</button>
+    <button onclick="play(28)">第28集</button>
+    <button onclick="play(29)">第29集</button>
+    <button onclick="play(30)">第30集</button>
+ 
+ 
+  </div>
+
+  <div id="player"></div>
+  
+  <a class="vip-link" href="https://ljt462625949.github.io/testphoto/sousuo" target="_blank">
+    🔗 前往 VIP 视频解析播放
+  </a>
+
+  <script>
+    const urls = {
+      1: "https://jx.xmflv.com/?url=https://v.youku.com/v_show/id_XNTk0Nzc1MTg1Mg==.html?s=decf386f28c24ee4bac6",
+      2: "https://jx.xmflv.com/?url=https://v.youku.com/v_show/id_XNTk0NjI5ODM0MA==.html?s=decf386f28c24ee4bac6&scm=20140719.apircmd.298496.video_XNTk0NjI5ODM0MA==&spm=a2hkt.13141534.1_7.d_2_2",
+      3: "https://jx.xmflv.com/?url=https://v.youku.com/v_show/id_XNTk0NjQxNzg0NA==.html?s=decf386f28c24ee4bac6&scm=20140719.apircmd.298496.video_XNTk0NjQxNzg0NA==&spm=a2hkt.13141534.1_7.d_2_3",
+      4: "https://jx.xmflv.com/?url=https://v.youku.com/v_show/id_XNTk0ODQ4OTM3Ng==.html?s=decf386f28c24ee4bac6&scm=20140719.apircmd.298496.video_XNTk0ODQ4OTM3Ng==&spm=a2hkt.13141534.1_7.d_2_4",
+      5: "https://jx.xmflv.com/?url=https://v.youku.com/v_show/id_XNTk0ODkzNzIyNA==.html?s=decf386f28c24ee4bac6&scm=20140719.apircmd.298496.video_XNTk0ODkzNzIyNA==&spm=a2hkt.13141534.1_7.d_2_5",
+      6: "https://jx.xmflv.com/?url=https://v.youku.com/v_show/id_XNTk0ODkzNzIyOA==.html?s=decf386f28c24ee4bac6&scm=20140719.apircmd.298496.video_XNTk0ODkzNzIyOA==&spm=a2hkt.13141534.1_7.d_2_6",
+      7: "https://jx.xmflv.com/?url=https://v.youku.com/v_show/id_XNTk0NzA3MDY0OA==.html?s=decf386f28c24ee4bac6&scm=20140719.apircmd.298496.video_XNTk0NzA3MDY0OA==&spm=a2hkt.13141534.1_7.d_2_7",
+      8: "https://jx.xmflv.com/?url=https://v.youku.com/v_show/id_XNTk0OTA4NTg2NA==.html?s=decf386f28c24ee4bac6&scm=20140719.apircmd.298496.video_XNTk0OTA4NTg2NA==&spm=a2hkt.13141534.1_7.d_2_8",
+      9: "https://jx.xmflv.com/?url=https://v.youku.com/v_show/id_XNTk0NzE0OTU4MA==.html?s=decf386f28c24ee4bac6&scm=20140719.apircmd.298496.video_XNTk0NzE0OTU4MA==&spm=a2hkt.13141534.1_7.d_2_9",
+      10:"https://jx.xmflv.com/?url=https://v.youku.com/v_show/id_XNTk0NzE0OTU4NA==.html?s=decf386f28c24ee4bac6&scm=20140719.apircmd.298496.video_XNTk0NzE0OTU4NA==&spm=a2hkt.13141534.1_7.d_2_10",
+      11:"https://jx.xmflv.com/?url=https://v.youku.com/v_show/id_XNTk0OTg1MzYwOA==.html?s=decf386f28c24ee4bac6&scm=20140719.apircmd.298496.video_XNTk0OTg1MzYwOA==&spm=a2hkt.13141534.1_7.d_2_11",
+      12:"https://jx.xmflv.com/?url=https://v.youku.com/v_show/id_XNTk0Nzk0Mjk3Mg==.html?s=decf386f28c24ee4bac6&scm=20140719.apircmd.298496.video_XNTk0Nzk0Mjk3Mg==&spm=a2hkt.13141534.1_7.d_2_12",
+      13: "https://jx.xmflv.com/?url=https://v.youku.com/v_show/id_XNTk0ODI3NTQ5Mg==.html?s=decf386f28c24ee4bac6&scm=20140719.apircmd.298496.video_XNTk0ODI3NTQ5Mg==&spm=a2hkt.13141534.1_7.d_2_13",
+      14: "https://jx.xmflv.com/?url=https://v.youku.com/v_show/id_XNTk0ODI3Njg1Mg==.html?s=decf386f28c24ee4bac6&scm=20140719.apircmd.298496.video_XNTk0ODI3Njg1Mg==&spm=a2hkt.13141534.1_7.d_2_14",
+      15: "https://jx.xmflv.com/?url=https://v.youku.com/v_show/id_XNTk0ODM5MzY2MA==.html?s=decf386f28c24ee4bac6&scm=20140719.apircmd.298496.video_XNTk0ODM5MzY2MA==&spm=a2hkt.13141534.1_7.d_2_15",
+      16: "https://jx.xmflv.com/?url=https://v.youku.com/v_show/id_XNTk0ODM4NzgzNg==.html?s=decf386f28c24ee4bac6&scm=20140719.apircmd.298496.video_XNTk0ODM4NzgzNg==&spm=a2hkt.13141534.1_7.d_2_16",
+      17: "https://jx.xmflv.com/?url=https://v.youku.com/v_show/id_XNTk1MDk3NDEwNA==.html?s=decf386f28c24ee4bac6&scm=20140719.apircmd.298496.video_XNTk1MDk3NDEwNA==&spm=a2hkt.13141534.1_7.d_2_17",
+      18: "https://jx.xmflv.com/?url=https://v.youku.com/v_show/id_XNTk0OTA1MzMwNA==.html?s=decf386f28c24ee4bac6&scm=20140719.apircmd.298496.video_XNTk0OTA1MzMwNA==&spm=a2hkt.13141534.1_7.d_2_18",
+      19: "https://jx.xmflv.com/?url=https://v.youku.com/v_show/id_XNTk0OTA1MzMwMA==.html?s=decf386f28c24ee4bac6&scm=20140719.apircmd.298496.video_XNTk0OTA1MzMwMA==&spm=a2hkt.13141534.1_7.d_2_19",
+      20:"https://jx.xmflv.com/?url=https://v.youku.com/v_show/id_XNTk1MDk3NDEwOA==.html?s=decf386f28c24ee4bac6&scm=20140719.apircmd.298496.video_XNTk1MDk3NDEwOA==&spm=a2hkt.13141534.1_7.d_2_20",
+      21: "https://jx.xmflv.com/?url=https://v.youku.com/v_show/id_XNTk1MTUzNDQwNA==.html?s=decf386f28c24ee4bac6&scm=20140719.apircmd.298496.video_XNTk1MTUzNDQwNA==&spm=a2hkt.13141534.1_7.d_2_21",
+      22: "https://jx.xmflv.com/?url=https://v.youku.com/v_show/id_XNTk1MTU5ODc2MA==.html?s=decf386f28c24ee4bac6&scm=20140719.apircmd.298496.video_XNTk1MTU5ODc2MA==&spm=a2hkt.13141534.1_7.d_2_22",
+      23: "https://jx.xmflv.com/?url=https://v.youku.com/v_show/id_XNTk1MzUyNjI4OA==.html?s=decf386f28c24ee4bac6&scm=20140719.apircmd.298496.video_XNTk1MzUyNjI4OA==&spm=a2hkt.13141534.1_7.d_2_23",
+      24: "https://jx.xmflv.com/?url=https://v.youku.com/v_show/id_XNTk1MTU5ODc1Ng==.html?s=decf386f28c24ee4bac6&scm=20140719.apircmd.298496.video_XNTk1MTU5ODc1Ng==&spm=a2hkt.13141534.1_7.d_2_24",
+      25: "https://jx.xmflv.com/?url=https://v.youku.com/v_show/id_XNTk1MzUyNjI4NA==.html?s=decf386f28c24ee4bac6&scm=20140719.apircmd.298496.video_XNTk1MzUyNjI4NA==&spm=a2hkt.13141534.1_7.d_2_25",
+      26: "https://jx.xmflv.com/?url=https://v.youku.com/v_show/id_XNTk1MTk1ODY0MA==.html?s=decf386f28c24ee4bac6&scm=20140719.apircmd.298496.video_XNTk1MTk1ODY0MA==&spm=a2hkt.13141534.1_7.d_2_26",
+      27: "https://jx.xmflv.com/?url=https://v.youku.com/v_show/id_XNTk1MjE4NjExNg==.html?s=decf386f28c24ee4bac6&scm=20140719.apircmd.298496.video_XNTk1MjE4NjExNg==&spm=a2hkt.13141534.1_7.d_2_27",
+      28: "https://jx.xmflv.com/?url=https://v.youku.com/v_show/id_XNTk1MTk1ODYzMg==.html?s=decf386f28c24ee4bac6&scm=20140719.apircmd.298496.video_XNTk1MTk1ODYzMg==&spm=a2hkt.13141534.1_7.d_2_28",
+      29: "https://jx.xmflv.com/?url=https://v.youku.com/v_show/id_XNTk1MTk1ODYzNg==.html?s=decf386f28c24ee4bac6&scm=20140719.apircmd.298496.video_XNTk1MTk1ODYzNg==&spm=a2hkt.13141534.1_7.d_2_29",
+      30: "https://jx.xmflv.com/?url=https://v.youku.com/v_show/id_XNTk1MjAwMjEzMg==.html?s=decf386f28c24ee4bac6&scm=20140719.apircmd.298496.video_XNTk1MjAwMjEzMg==&spm=a2hkt.13141534.1_7.d_2_30"
+	  
+    };
+
+    function play(ep) {
+      let url = urls[ep];
+      document.getElementById("player").innerHTML =
+        `<iframe src="${url}" allowfullscreen></iframe>`;
+    }
+  </script>
+</body>
+</html>
